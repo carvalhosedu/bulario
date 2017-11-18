@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import {User} from "../../models/user";
 /**
  * Generated class for the Login page.
  *
@@ -14,11 +15,9 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class Login {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  user = {} as User;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   login(){

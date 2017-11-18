@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { User } from "../../models/user";
+import { AngularFireAuth } from "angularfire2/auth";
 
 /**
  * Generated class for the Signup page.
@@ -15,16 +17,24 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class Signup {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+
+  constructor( private ofAuth: AngularFireAuth,
+
+    public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Signup');
   }
 
-  signup(){
-    //Api connections
-    this.navCtrl.push(TabsPage);
+  async signup(user: User) {
+    try {
+      const result = await this.ofAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      console.log(result);
+    }
+    catch (e){
+      console.error(e);
+    }
   }
-
 }

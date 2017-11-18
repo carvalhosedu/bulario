@@ -10,13 +10,13 @@
 
   <ion-list>
     <ion-item>
-      <ion-label fixed>Usuário</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Senha</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
     <button ion-button block color="primary" class="marginTop" (click)="login()">Entrar</button>
