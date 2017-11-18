@@ -1,4 +1,4 @@
-export const FIREBASE_CONFIG = var config = {
+export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyC3PdqhOfJlGxhTwmDp4PMpCA9GmyDaxEc",
   authDomain: "bulario-85795.firebaseapp.com",
   databaseURL: "https://bulario-85795.firebaseio.com",
