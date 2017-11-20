@@ -1,10 +1,13 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding id="home">
 
-<ion-content padding>
-  <h2>Bem vindo ao meu bulário</h2>
-  <button ion-button color="primary" (click)="logout()">Sair</button>
+  <img src="assets/imgs/icone_principal.png" class="logo"/>
+
+  <div>
+    <h1> Meu Bulário </h1>
+
+  </div>
+
+  <button ion-button block class="button1" (click)="irremedio()">cadastrar remedio</button>
+  <button ion-button block class="button2" (click)="ircaseiro()">Cadastrar Remedio Caseiro</button>
+  <button ion-button block class="button3" (click)="irbula()">Bula</button>
 </ion-content>

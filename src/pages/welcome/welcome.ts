@@ -19,6 +19,10 @@ export class Welcome {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Welcome');
+  }
+
   login(){
     this.navCtrl.push(Login);
   }

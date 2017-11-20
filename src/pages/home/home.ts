@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, App } from 'ionic-angular';
-import { AngularFireAuth } from "angularfire2/auth";
-import {Welcome} from "../welcome/welcome";
+import { NavController } from 'ionic-angular';
+import {CaseiroPage} from "../caseiro/caseiro";
+import {ReceitaPage} from "../receita/receita";
 
 @Component({
   selector: 'page-home',
@@ -9,28 +9,16 @@ import {Welcome} from "../welcome/welcome";
 })
 export class HomePage {
 
-  constructor(private ofAuth: AngularFireAuth, private toast: ToastController,
-              public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(public navCtrl: NavController) {
 
   }
 
-  ionViewDidLoad() {
-    this.ofAuth.authState.subscribe(data => {
-      if (data && data.email) {
-        this.toast.create({
-          message: `Bem vindo ao APP_NAME, ${data.email}`,
-          duration: 3000
-        }).present();
-      } else {
-        this.toast.create({
-          message: `Não foi possivel obter os detalhes da autenticação !`,
-          duration: 3000
-        }).present();
-      }
-    });
+  irremedio() {
+      this.navCtrl.push(ReceitaPage);
   }
 
-  logout(){
-    this.app.getRootNav().setRoot(Welcome);
+  ircaseiro(){
+    this.navCtrl.push('CaseiroPage');
   }
+
 }

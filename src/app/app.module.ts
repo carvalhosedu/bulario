@@ -9,12 +9,15 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from "angularfire2/auth";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {FIREBASE_CONFIG} from "./app.firebase.config";
+
+import { SQLite } from '@ionic-native/sqlite'
+import { DatabaseProvider } from '../providers/database/database';
+import { ReceitaProvider } from '../providers/receita/receita';
+import {ReceitaPage} from "../pages/receita/receita";
+import {EditReceitaPage} from "../pages/edit-receita/edit-receita";
 
 @NgModule({
   declarations: [
@@ -25,13 +28,13 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     TabsPage,
     Welcome,
     Login,
-    Signup
+    Signup,
+    ReceitaPage,
+    EditReceitaPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,12 +45,17 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     TabsPage,
     Welcome,
     Login,
-    Signup
+    Signup,
+    ReceitaPage,
+    EditReceitaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite,
+    DatabaseProvider,
+    ReceitaProvider
   ]
 })
 export class AppModule {}
