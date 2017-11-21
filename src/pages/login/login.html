@@ -7,19 +7,21 @@
 <ion-content padding id="login">
   <img src="assets/imgs/icone_principal.png" class="logo"/>
   <h1> Meu bulário </h1>
+  <h4> Efetue seu login ! </h4>
 
   <ion-list>
     <ion-item>
-      <ion-label fixed>Usuário</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Senha</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
-    <button ion-button block color="primary" class="marginTop" (click)="login()">Entrar</button>
+    <button ion-button block color="primary" class="marginTop" (click)="login(user)">Entrar</button>
+    <button ion-button block color="primary" class="button2" (click)="voltar()">Voltar</button>
 
   </ion-list>
 </ion-content>

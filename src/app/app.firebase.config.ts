@@ -1,8 +1,8 @@
 export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyC3PdqhOfJlGxhTwmDp4PMpCA9GmyDaxEc",
-  authDomain: "bulario-85795.firebaseapp.com",
-  databaseURL: "https://bulario-85795.firebaseio.com",
-  projectId: "bulario-85795",
-  storageBucket: "bulario-85795.appspot.com",
-  messagingSenderId: "860178984690"
+  apiKey: "AIzaSyCfPZP3hJ28ERclDsmMRuuVJwKbJ7Xkxk4",
+  authDomain: "bulario-fcf82.firebaseapp.com",
+  databaseURL: "https://bulario-fcf82.firebaseio.com",
+  projectId: "bulario-fcf82",
+  storageBucket: "bulario-fcf82.appspot.com",
+  messagingSenderId: "108097571445"
 };
