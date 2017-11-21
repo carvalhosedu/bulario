@@ -18,22 +18,25 @@ import {Welcome} from "../welcome/welcome";
 export class Login {
 
   user = {} as User;
+  public mesError = false;
 
   constructor(private ofAuth: AngularFireAuth,
               public navCtrl: NavController, public navParams: NavParams) {
   }
 
   async login(user: User){
-    try {
-      const result = this.ofAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if(result) {
+    this.ofAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      .then(auth => {
+        // Do custom things with auth
         this.navCtrl.setRoot(TabsPage);
-      }
-    }
-    catch (e){
-      console.error(e);
-    }
+      })
+      .catch(err => {
+        // Handle error
+        document.getElementById('msgError').style.display='block';
+        return;
+      });
   }
+
   voltar(){
     this.navCtrl.push(Welcome);
   }

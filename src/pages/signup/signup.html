@@ -15,8 +15,13 @@
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label fixed>Confirme a senha</ion-label>
+      <ion-input type="password" [(ngModel)]="user.passwordRetyped"></ion-input>
+    </ion-item>
+
     <button class="marginTop" ion-button block color="primary" (click)="signup(user)">Cadastrar</button>
-    <button class="button2" ion-button block color="primary" (click)="voltar()">Voltar</button>
+    <button class="button2" ion-button block color="primary" (click)="voltar()">Cancelar</button>
 
   </ion-list>
 </ion-content>

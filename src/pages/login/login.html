@@ -20,8 +20,13 @@
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
+    <div id="msgError" style="display: none" class="message-alert-error">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      E-mail ou senha incorretos !
+    </div>
+
     <button ion-button block color="primary" class="marginTop" (click)="login(user)">Entrar</button>
-    <button ion-button block color="primary" class="button2" (click)="voltar()">Voltar</button>
+    <button ion-button block color="primary" class="button2" (click)="voltar()">Cancelar</button>
 
   </ion-list>
 </ion-content>
