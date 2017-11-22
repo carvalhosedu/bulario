@@ -5,8 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Welcome } from '../pages/welcome/welcome';
 import { DatabaseProvider } from '../providers/database/database';
 import {AngularFireAuth} from "angularfire2/auth";
-import {Login} from "../pages/login/login";
-import {TabsPage} from "../pages/tabs/tabs";
+import {HomePage} from "../pages/home/home";
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +26,7 @@ export class MyApp {
       if(!auth)
         this.rootPage = Welcome;
       else
-        this.rootPage = TabsPage;
+        this.rootPage = HomePage;
     });
   }
 }

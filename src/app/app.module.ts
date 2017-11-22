@@ -8,7 +8,6 @@ import { Signup } from '../pages/signup/signup';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,7 +25,6 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     Welcome,
     Login,
     Signup,
@@ -45,7 +43,6 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     Welcome,
     Login,
     Signup,
