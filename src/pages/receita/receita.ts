@@ -1,62 +1,44 @@
+import { ReceitaProvider } from './../../providers/receita/receita';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { ReceitaProvider, Receita } from '../../providers/receita/receita'
-import { EditReceitaPage } from '../edit-receita/edit-receita';
+import { NavController, ToastController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 
-
-
-/**
- * Generated class for the ReceitaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-receita',
   templateUrl: 'receita.html',
 })
 export class ReceitaPage {
 
-  receitas: any[] = [];
-  onlyInactives: boolean = false;
-  searchText: string = null;
+  receitas: Observable<any>;
 
-  constructor(public navCtrl: NavController, private toast: ToastController, private receitaProvider: ReceitaProvider) { }
+  constructor(public navCtrl: NavController, private provider: ReceitaProvider,
+              private toast: ToastController) {
 
-  ionViewDidEnter() {
-    this.getAllReceitas();
+    this.receitas = this.provider.getAll();
   }
 
-  getAllReceitas() {
-    this.receitaProvider.getAll(!this.onlyInactives, this.searchText)
-      .then((result: any[]) => {
-        if(result!=undefined)
-        this.receitas = result;
-      });
+  novaReceita() {
+    this.navCtrl.push('ReceitaEditPage');
   }
 
-  addReceita() {
-    this.navCtrl.push(EditReceitaPage);
+  editReceita(receita: any) {
+    // Maneira 1
+    this.navCtrl.push('ReceitaEditPage', { receita: receita });
+
+    // Maneira 2
+    // this.navCtrl.push('ReceitaEditPage', { key: receita.key });
   }
 
-  editReceita(id: number) {
-    this.navCtrl.push(EditReceitaPage, { id: id });
-  }
-
-  removeReceita(receita: Receita) {
-    this.receitaProvider.remove(receita.id)
-      .then(() => {
-        // Removendo do array de receitas
-        var index = this.receitas.indexOf(receita);
-        this.receitas.splice(index, 1);
-        this.toast.create({ message: 'Receita removida.', duration: 3000, position: 'botton' }).present();
-      })
-  }
-
-  filterReceitas(ev: any) {
-    this.getAllReceitas();
+  removeReceita(key: string) {
+    if (key) {
+      this.provider.remove(key)
+        .then(() => {
+          this.toast.create({ message: 'Receita removida com sucesso.', duration: 3000 }).present();
+        })
+        .catch(() => {
+          this.toast.create({ message: 'Erro ao remover a receita.', duration: 3000 }).present();
+        });
+    }
   }
 
 }

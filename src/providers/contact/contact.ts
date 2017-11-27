@@ -1,16 +1,15 @@
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
-export class ReceitaProvider {
-
-  private PATH = 'receitas/';
+export class ContactProvider {
+  private PATH = 'contacts/';
 
   constructor(private db: AngularFireDatabase) {
   }
 
   getAll() {
-    return this.db.list(this.PATH, ref => ref.orderByChild('problema'))
+    return this.db.list(this.PATH, ref => ref.orderByChild('name'))
       .snapshotChanges()
       .map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
@@ -24,18 +23,16 @@ export class ReceitaProvider {
       });
   }
 
-  save(receita: any) {
+  save(contact: any) {
     return new Promise((resolve, reject) => {
-      if (receita.key) {
+      if (contact.key) {
         this.db.list(this.PATH)
-          .update(receita.key, { problema: receita.problema, bula: receita.bula,
-            horario: receita.horario, quantidade: receita.quantidade })
+          .update(contact.key, { name: contact.name, tel: contact.tel })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-          .push({ problema: receita.problema, bula: receita.bula,
-            horario: receita.horario, quantidade: receita.quantidade })
+          .push({ name: contact.name, tel: contact.tel })
           .then(() => resolve());
       }
     })
@@ -44,5 +41,4 @@ export class ReceitaProvider {
   remove(key: string) {
     return this.db.list(this.PATH).remove(key);
   }
-
 }

@@ -8,16 +8,16 @@ import { Signup } from '../pages/signup/signup';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SQLite } from '@ionic-native/sqlite'
-import { DatabaseProvider } from '../providers/database/database';
+import { FIREBASE_CONFIG } from "./app.firebase.config";
+import { ContactProvider } from '../providers/contact/contact';
 import { ReceitaProvider } from '../providers/receita/receita';
-import {ReceitaPage} from "../pages/receita/receita";
-import {EditReceitaPage} from "../pages/edit-receita/edit-receita";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
+import { ReceitaPage } from "../pages/receita/receita";
 
 @NgModule({
   declarations: [
@@ -25,17 +25,18 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AboutPage,
     ContactPage,
     HomePage,
+    TabsPage,
     Welcome,
     Login,
     Signup,
-    ReceitaPage,
-    EditReceitaPage
+    ReceitaPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,18 +44,17 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AboutPage,
     ContactPage,
     HomePage,
+    TabsPage,
     Welcome,
     Login,
     Signup,
-    ReceitaPage,
-    EditReceitaPage
+    ReceitaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite,
-    DatabaseProvider,
+    ContactProvider,
     ReceitaProvider
   ]
 })

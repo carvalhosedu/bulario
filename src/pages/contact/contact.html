@@ -1,17 +1,31 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Contact
+      Contatos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-item-sliding *ngFor="let contact of contacts | async">
+      <ion-item>
+        <h1>{{ contact.name }}</h1>
+        <p>{{ contact.tel }}</p>
+        <button ion-button color="secondary" (click)="editContact(contact)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeContact(contact.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-item-sliding>
   </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newContact()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
