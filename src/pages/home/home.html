@@ -1,8 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center;">
+    <ion-title style=" float: left; margin-left: 32%; text-align: center;">
       Meu Bulário
     </ion-title>
+    <button color="primary" ion-button icon-only (click)="signOut()" style="float: right;">
+      <ion-icon (click)="signOut()" color="danger" name="power"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +16,4 @@
   <button ion-button block class="button1" (click)="irremedio()">cadastrar remedio</button>
   <button ion-button block class="button2" (click)="ircaseiro()">Cadastrar Remedio Caseiro</button>
   <button ion-button block class="button3" (click)="irbula()">Bula</button>
-  <button ion-button icon-only (click)="signOut()">
-    <ion-icon name="power"></ion-icon>
-  </button>
 </ion-content>
