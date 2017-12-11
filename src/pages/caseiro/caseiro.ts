@@ -1,35 +1,46 @@
+import { CaseiroProvider } from './../../providers/caseiro/caseiro';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from "../home/home"
-import { RemedioCaseiroPage} from "../remedio-caseiro/remedio-caseiro";
+import { NavController, ToastController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the CaseiroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-caseiro',
   templateUrl: 'caseiro.html',
 })
+
 export class CaseiroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  caseiros: Observable<any>;
+
+  constructor(public navCtrl: NavController, private provider: CaseiroProvider,
+              private toast: ToastController) {
+
+    this.caseiros = this.provider.getAll();
   }
 
-  voltar() {
-    this.navCtrl.push('HomePage');
-  }
-
-  irremediocaseiro() {
+  novaCaseiro() {
     this.navCtrl.push('RemedioCaseiroPage');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CaseiroPage');
+  editCaseiro(caseiro: any) {
+    // Maneira 1
+    this.navCtrl.push('RemedioCaseiroPage', { caseiro: caseiro });
+
+    // Maneira 2
+    // this.navCtrl.push('RemedioCaseiroPage', { key: caseiro.key });
+  }
+
+   removeCaseiro(key: string) {
+    if (key) {
+      this.provider.remove(key)
+        .then(() => {
+          this.toast.create({ message: 'Receita caseira removida com sucesso.', duration: 3000 }).present();
+        })
+        .catch(() => {
+          this.toast.create({ message: 'Erro ao remover a receita caseira.', duration: 3000 }).present();
+        });
+    }
   }
 
 }
+

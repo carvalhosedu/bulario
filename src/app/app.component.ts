@@ -4,8 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Welcome } from '../pages/welcome/welcome';
 import {AngularFireAuth} from "angularfire2/auth";
-import {Login} from "../pages/login/login";
-import {TabsPage} from "../pages/tabs/tabs";
 
 @Component({
   templateUrl: 'app.html'
@@ -24,8 +22,6 @@ export class MyApp {
     this.afAuth.authState.subscribe(auth => {
       if(!auth)
         this.rootPage = Welcome;
-      else
-        this.rootPage = TabsPage;
     });
   }
 }

@@ -1,9 +1,32 @@
-<ion-content padding id="caaseiro">
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Caseiro
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 
+<ion-content padding>
 
+  <ion-list>
+    <ion-item-sliding *ngFor="let caseiro of caseiros | async">
+      <ion-item>
+        <h1>{{ caseiro.problema }}</h1>
+        <p>{{ caseiro.ingredientes }}</p>
+        <button ion-button color="secondary" (click)="editCaseiro(caseiro)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeCaseiro(caseiro.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 
-
-
-  <button ion-button block class="button1" (click)="irremediocaseiro()">cadastrar remedio</button>
-  <button ion-button block class="button1" (click)="voltar()">voltar</button>
+  <ion-fab bottom right>
+     <button ion-fab color="primary" (click)="novaCaseiro()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
+

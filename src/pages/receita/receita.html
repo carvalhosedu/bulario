@@ -8,8 +8,9 @@
 
 <ion-content padding>
 
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let receita of receitas | async">
+    <ion-item-sliding *ngFor="let receita of receitaList">
       <ion-item>
         <h1>{{ receita.problema }}</h1>
         <p>{{ receita.bula }}</p>

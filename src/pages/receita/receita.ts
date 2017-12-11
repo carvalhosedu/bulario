@@ -2,6 +2,7 @@ import { ReceitaProvider } from './../../providers/receita/receita';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-receita',
@@ -9,12 +10,60 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ReceitaPage {
 
+  public receitaList: Array<any>;
+  public loadedReceitaList: Array<any>;
+  public receitaRef: firebase.database.Reference;
   receitas: Observable<any>;
 
   constructor(public navCtrl: NavController, private provider: ReceitaProvider,
               private toast: ToastController) {
 
-    this.receitas = this.provider.getAll();
+    this.receitas = this.provider.getAll()
+    this.receitaRef = firebase.database().ref('/receitas');
+
+    this.receitaRef.on('value', receitaList => {
+      let receitas = [];
+      console.log("testando",receitas);
+      receitaList.forEach( receita => {
+        var newObj = receita.val();
+        newObj['key'] = receita.key;
+        receitas.push(newObj);
+        return false;
+      });
+
+      this.receitaList = receitas;
+      this.loadedReceitaList = receitas;
+    });
+  }
+
+  initializeItems(): void {
+    this.receitaList = this.loadedReceitaList;
+  }
+
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+
+
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      return;
+    }
+
+    this.receitaList = this.receitaList.filter((v) => {
+      if(v.problema && q) {
+        if (v.problema.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+    console.log(q, this.receitaList.length);
+
   }
 
   novaReceita() {

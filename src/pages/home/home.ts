@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   ircaseiro(){
-    this.navCtrl.push('CaseiroPage');
+    this.navCtrl.push(CaseiroPage);
   }
 
   signOut() {
