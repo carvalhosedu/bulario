@@ -18,6 +18,8 @@ import { ReceitaPage } from "../pages/receita/receita";
 import { CaseiroProvider } from '../providers/caseiro/caseiro';
 import { BulaProvider } from '../providers/bula/bula';
 import {CaseiroPage} from "../pages/caseiro/caseiro";
+import {BulaPage} from "../pages/bula/bula";
+import {BulaEditPage} from "../pages/bula-edit/bula-edit";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {CaseiroPage} from "../pages/caseiro/caseiro";
     Welcome,
     Login,
     Signup,
-    ReceitaPage
+    ReceitaPage,
+    BulaPage,
+    BulaEditPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import {CaseiroPage} from "../pages/caseiro/caseiro";
     Welcome,
     Login,
     Signup,
-    ReceitaPage
+    ReceitaPage,
+    BulaPage,
+    BulaEditPage
   ],
   providers: [
     StatusBar,

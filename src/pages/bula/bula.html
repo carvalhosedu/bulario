@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      bula
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let bula of bulas | async">
+      <ion-item>
+        <h1>{{ bula.remedio }}</h1>
+        <p>{{ bula.descricao }}</p>
+        <button ion-button color="secondary" (click)="editBula(bula)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeBula(bula.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+     <button ion-fab color="primary" (click)="novaBula()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+

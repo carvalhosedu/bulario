@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {CaseiroPage} from "../caseiro/caseiro";
 import {ReceitaPage} from "../receita/receita";
 import {AngularFireAuth} from "angularfire2/auth";
+import {BulaPage} from "../bula/bula";
 
 @Component({
   selector: 'page-home',
@@ -20,6 +21,10 @@ export class HomePage {
 
   ircaseiro(){
     this.navCtrl.push(CaseiroPage);
+  }
+
+  irbula(){
+    this.navCtrl.push(BulaPage);
   }
 
   signOut() {
