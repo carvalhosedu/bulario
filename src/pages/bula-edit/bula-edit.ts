@@ -3,7 +3,6 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import { BulaProvider } from './../../providers/bula/bula';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-@IonicPage()
 @Component({
   selector: 'page-bula-edit',
   templateUrl: 'bula-edit.html',
@@ -29,14 +28,14 @@ export class BulaEditPage {
     this.title = this.navParams.data.bula ? 'Alterando bula' : 'Nova bula';
   }
 
-   createForm() {
+  createForm() {
     this.form = this.formBuilder.group({
       key: [this.bula.key],
       remedio: [this.bula.remedio, Validators.required],
       descricao: [this.bula.descricao, Validators.required],
+      quantidade: [this.bula.quantidade, Validators.required],
     });
   }
-
 
   onSubmit() {
     if (this.form.valid) {
@@ -51,5 +50,6 @@ export class BulaEditPage {
         })
     }
   }
+
 
 }

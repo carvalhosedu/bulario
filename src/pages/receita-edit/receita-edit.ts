@@ -2,8 +2,9 @@ import { ReceitaProvider } from './../../providers/receita/receita';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import firebase from 'firebase';
 
-@IonicPage()
 @Component({
   selector: 'page-receita-edit',
   templateUrl: 'receita-edit.html',
@@ -13,6 +14,7 @@ export class ReceitaEditPage {
   title: string;
   form: FormGroup;
   receita: any;
+  bulas: any = [];
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
@@ -21,6 +23,18 @@ export class ReceitaEditPage {
 
     // maneira 1
     this.receita = this.navParams.data.receita || { };
+    
+    let bulasRef = firebase.database().ref('/bulas');
+
+    bulasRef.on('value', bulas => {
+      console.log("bulas", bulas);
+      bulas.forEach( bula => {
+        this.bulas.push(bula.val());
+        return false;
+      });
+    });
+    
+
     this.createForm();
 
     // // maneira 2

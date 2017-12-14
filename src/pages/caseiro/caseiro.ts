@@ -2,12 +2,12 @@ import { CaseiroProvider } from './../../providers/caseiro/caseiro';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { RemedioCaseiroPage } from "../remedio-caseiro/remedio-caseiro";
 
 @Component({
   selector: 'page-caseiro',
   templateUrl: 'caseiro.html',
 })
-
 export class CaseiroPage {
 
   caseiros: Observable<any>;
@@ -19,12 +19,12 @@ export class CaseiroPage {
   }
 
   novaCaseiro() {
-    this.navCtrl.push('RemedioCaseiroPage');
+    this.navCtrl.push(RemedioCaseiroPage);
   }
 
   editCaseiro(caseiro: any) {
     // Maneira 1
-    this.navCtrl.push('RemedioCaseiroPage', { caseiro: caseiro });
+    this.navCtrl.push(RemedioCaseiroPage, { caseiro: caseiro });
 
     // Maneira 2
     // this.navCtrl.push('RemedioCaseiroPage', { key: caseiro.key });

@@ -11,7 +11,6 @@ import {HomePage} from "../home/home";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',

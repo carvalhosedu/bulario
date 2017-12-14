@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      bula
+      Bulas
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,6 +13,7 @@
       <ion-item>
         <h1>{{ bula.remedio }}</h1>
         <p>{{ bula.descricao }}</p>
+        <p>{{ bula.quantidade }}</p>
         <button ion-button color="secondary" (click)="editBula(bula)">
           <ion-icon name="create"></ion-icon>
         </button>
@@ -24,7 +25,7 @@
   </ion-list>
 
   <ion-fab bottom right>
-     <button ion-fab color="primary" (click)="novaBula()">
+    <button ion-fab color="primary" (click)="novaBula()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

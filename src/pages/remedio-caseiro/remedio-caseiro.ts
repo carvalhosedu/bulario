@@ -3,7 +3,6 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import { CaseiroProvider } from './../../providers/caseiro/caseiro';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-@IonicPage()
 @Component({
   selector: 'page-remedio-caseiro',
   templateUrl: 'remedio-caseiro.html',

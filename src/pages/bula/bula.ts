@@ -2,12 +2,12 @@ import { BulaProvider } from './../../providers/bula/bula';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { BulaEditPage } from "../bula-edit/bula-edit";
 
 @Component({
   selector: 'page-bula',
   templateUrl: 'bula.html',
 })
-
 export class BulaPage {
 
   bulas: Observable<any>;
@@ -15,16 +15,20 @@ export class BulaPage {
   constructor(public navCtrl: NavController, private provider: BulaProvider,
               private toast: ToastController) {
 
-  this.bulas = this.provider.getAll();
+    this.bulas = this.provider.getAll();
   }
 
   novaBula() {
-    this.navCtrl.push('BulaEditPage');
+    this.navCtrl.push(BulaEditPage);
   }
 
   editBula(bula: any) {
-    this.navCtrl.push('BulaEditPage', { bula: bula });
-    }
+    // Maneira 1
+    this.navCtrl.push(BulaEditPage, {bula: bula });
+
+    // Maneira 2
+    // this.navCtrl.push('BulaEditPage', { key: bula.key });
+  }
 
   removeBula(key: string) {
     if (key) {

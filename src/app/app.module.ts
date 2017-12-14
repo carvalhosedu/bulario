@@ -15,24 +15,28 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { ReceitaProvider } from '../providers/receita/receita';
 import { ReceitaPage } from "../pages/receita/receita";
+import { ReceitaEditPage } from "../pages/receita-edit/receita-edit";
 import { CaseiroProvider } from '../providers/caseiro/caseiro';
 import { BulaProvider } from '../providers/bula/bula';
-import {CaseiroPage} from "../pages/caseiro/caseiro";
-import {BulaPage} from "../pages/bula/bula";
-import {BulaEditPage} from "../pages/bula-edit/bula-edit";
+import { CaseiroPage } from "../pages/caseiro/caseiro";
+import { BulaPage } from "../pages/bula/bula";
+import { BulaEditPage } from "../pages/bula-edit/bula-edit";
+import { RemedioCaseiroPage } from "../pages/remedio-caseiro/remedio-caseiro";
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
+    RemedioCaseiroPage,
     CaseiroPage,
     HomePage,
     Welcome,
     Login,
     Signup,
-    ReceitaPage,
     BulaPage,
-    BulaEditPage
+    BulaEditPage,
+    ReceitaPage,
+    ReceitaEditPage
   ],
   imports: [
     BrowserModule,
@@ -45,14 +49,16 @@ import {BulaEditPage} from "../pages/bula-edit/bula-edit";
   entryComponents: [
     MyApp,
     AboutPage,
+    RemedioCaseiroPage,
     CaseiroPage,
     HomePage,
     Welcome,
     Login,
     Signup,
-    ReceitaPage,
     BulaPage,
-    BulaEditPage
+    BulaEditPage,
+    ReceitaPage,
+    ReceitaEditPage
   ],
   providers: [
     StatusBar,

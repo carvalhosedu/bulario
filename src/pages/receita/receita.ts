@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
+import { ReceitaEditPage } from "../receita-edit/receita-edit";
 
 @Component({
   selector: 'page-receita',
@@ -23,7 +24,7 @@ export class ReceitaPage {
 
     this.receitaRef.on('value', receitaList => {
       let receitas = [];
-      console.log("testando",receitas);
+      
       receitaList.forEach( receita => {
         var newObj = receita.val();
         newObj['key'] = receita.key;
@@ -67,12 +68,12 @@ export class ReceitaPage {
   }
 
   novaReceita() {
-    this.navCtrl.push('ReceitaEditPage');
+    this.navCtrl.push(ReceitaEditPage);
   }
 
   editReceita(receita: any) {
     // Maneira 1
-    this.navCtrl.push('ReceitaEditPage', { receita: receita });
+    this.navCtrl.push(ReceitaEditPage, { receita: receita });
 
     // Maneira 2
     // this.navCtrl.push('ReceitaEditPage', { key: receita.key });
